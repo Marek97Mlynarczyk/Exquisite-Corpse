@@ -1,7 +1,7 @@
 ﻿/*
-In the game Exquisite Corpse, participants draw either a head, body, or feet of a creature. The players don’t know how their part of the body connects to the other two, until the drawing is finished and revealed.
-
-For this project, you’ll write a program that mimics the Exquisite Corpse game. Using methods, you’ll be able to randomly combine different parts of ASCII characters so they create a new creature.
+In the game Exquisite Corpse, participants draw either a head, body, or feet of a creature. 
+The players don’t know how their part of the body connects to the other two, until the drawing is finished and revealed.
+This is a program that mimics the Exquisite Corpse game. 
 */
 
 using System;
@@ -12,6 +12,8 @@ namespace ExquisiteCorpse
     { 
         static void BuildACreature(string head = null, string body = null, string feet = null)
         {
+            //If the head, body or feet for monster is selected, then translate it to int and choose a correct output from switch.
+            //If nothing is selected e.g. user click's enter or type in something wrong, then random output will be selected.
             Random randomNumber = new Random();
             int headNum = head != null ? TranslateToNumber(head) : randomNumber.Next(1, 4);
             int bodyNum = body != null ? TranslateToNumber(body) : randomNumber.Next(1, 4);
@@ -101,6 +103,7 @@ namespace ExquisiteCorpse
 
         static int TranslateToNumber(string creature)
         {
+            //Change string to int, to properly select the choice in SwitchCase
             switch (creature)
             {
                 case "ghost":
@@ -112,8 +115,9 @@ namespace ExquisiteCorpse
                 case "monster":
                     return 3;
 
+                // Return a random value if input is invalid
                 default:
-                return new Random().Next(1, 4); // Return a random value if input is invalid
+                return new Random().Next(1, 4); 
             }
         }
 
